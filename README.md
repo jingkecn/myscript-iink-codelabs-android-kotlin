@@ -1,15 +1,23 @@
 Welcome to Code Labs for MyScript Interactive Ink
 =================================================
 
+![app-starter-preview](docs/images/app/starter/preview.gif)
+
 [MyScript Developer](https://developer.myscript.com/) provides a complete developer guide of programming with [Interacrive Ink SDK](https://developer.myscript.com/docs/interactive-ink/1.3/overview/about/), however, the Code Labs in this project are aimed at hands-on coding experience by stepping you throught the process of buiding a small application or integrating Interactive Ink into an existing application.
 
 - [Welcome to Code Labs for MyScript Interactive Ink](#welcome-to-code-labs-for-myscript-interactive-ink)
+  - [Code Labs](#code-labs)
   - [MyScript Certificate](#myscript-certificate)
+
+Code Labs
+---------
+
+- [Get Started: Your First Interactive Ink Application](app/starter)
 
 MyScript Certificate
 --------------------
 
-Open the project in Android Studio, and run starter app or samples on an emulator or on a physical device, you'll see your application crashes and an error showing up in the `logcat` window:
+If you run the starter app or samples without a valid certificate, you'll see your application crashes and an error showing up in the `logcat` window:
 
 > [!ERROR]
 > Please replace the content of MyCertificate.java with the certificate you received from the [developer portal](https://developer.myscript.com/getting-started).

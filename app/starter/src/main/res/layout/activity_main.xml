@@ -10,6 +10,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <!-- TODO: include editor view(s). -->
+    <include layout="@layout/editor_view" />
 
 </android.support.constraint.ConstraintLayout>

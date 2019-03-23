@@ -17,6 +17,9 @@ Code Labs
 MyScript Certificate
 --------------------
 
+> [!IMPORTANT]
+> A personal developer certificate applied from [MyScript Developer](https://developer.myscript.com/getting-started) is integrated for the samples in this project, and is **NOT** supposed to be transfered for other usages.
+
 If you run the starter app or samples without a valid certificate, you'll see your application crashes and an error showing up in the `logcat` window:
 
 > [!ERROR]

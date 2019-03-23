@@ -26,4 +26,22 @@
         android:icon="@drawable/ic_convert"
         android:title="@string/menu_convert"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_export"
+        android:icon="@drawable/ic_export"
+        android:title="@string/menu_export"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/menu_export_latex"
+                android:icon="@drawable/ic_export"
+                android:title="@string/menu_export_latex"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/menu_export_math_ml"
+                android:icon="@drawable/ic_export"
+                android:title="@string/menu_export_math_ml"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
 </menu>

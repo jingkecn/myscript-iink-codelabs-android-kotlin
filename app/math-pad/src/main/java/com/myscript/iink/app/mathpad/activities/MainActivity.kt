@@ -10,14 +10,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.myscript.iink.ContentPackage
-import com.myscript.iink.ContentPart
-import com.myscript.iink.Editor
-import com.myscript.iink.IEditorListener
+import com.myscript.iink.*
 import com.myscript.iink.app.common.IInteractiveInkApplication
 import com.myscript.iink.app.mathpad.MyApplication
 import com.myscript.iink.app.mathpad.R
 import com.myscript.iink.extensions.convert
+import com.myscript.iink.extensions.copyToClipboard
 import com.myscript.iink.uireferenceimplementation.EditorView
 import com.myscript.iink.uireferenceimplementation.FontUtils
 import com.myscript.iink.uireferenceimplementation.InputController
@@ -99,6 +97,9 @@ class MainActivity : AppCompatActivity(), IEditorListener {
                 // TODO: 7 - redo and undo your modifications.
                 R.id.menu_redo -> it.redo()
                 R.id.menu_undo -> it.undo()
+                // TODO: 8 - export and copy to clipboard.
+                R.id.menu_export_latex -> it.copyToClipboard(this, MimeType.LATEX)
+                R.id.menu_export_math_ml -> it.copyToClipboard(this, MimeType.MATHML)
                 else -> return@let
             }
         }

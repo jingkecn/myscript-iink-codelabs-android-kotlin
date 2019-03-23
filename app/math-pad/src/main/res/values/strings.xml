@@ -9,4 +9,7 @@
     <string name="menu_redo">Redo</string>
     <string name="menu_clear">Clear</string>
     <string name="menu_convert">Convert</string>
+    <string name="menu_export">Export As</string>
+    <string name="menu_export_latex">LaTeX</string>
+    <string name="menu_export_math_ml">Math ML</string>
 </resources>

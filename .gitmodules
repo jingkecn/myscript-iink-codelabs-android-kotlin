@@ -1,0 +1,3 @@
+[submodule "myscript/iink/ui"]
+	path = myscript/iink/ui
+	url = https://github.com/MyScript/interactive-ink-examples-android.git

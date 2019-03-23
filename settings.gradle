@@ -6,6 +6,7 @@ rootProject.name = 'myscript.iink.codelabs.android.kotlin'
 
 def myProjects = [
         // applications
+        ':app-math-pad'            : file("$settingsDir/app/math-pad"),
         ':app-starter'             : file("$settingsDir/app/starter"),
         // libraries
         ':app-common'              : file("$settingsDir/app/common"),

@@ -19,6 +19,7 @@ import com.myscript.iink.app.mathpad.MyApplication
 import com.myscript.iink.app.mathpad.R
 import com.myscript.iink.extensions.convert
 import com.myscript.iink.uireferenceimplementation.EditorView
+import com.myscript.iink.uireferenceimplementation.FontUtils
 import com.myscript.iink.uireferenceimplementation.InputController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity(), IEditorListener {
 
     private fun initWith(contentPackage: ContentPackage) = with(contentPackage) {
         // TODO: 3 - try different part types: Diagram, Drawing, Math, Text, Text Document.
-        createPart("Text Document").let { contentPart = it }
+        createPart("Math").let { contentPart = it }
     }
 
     private fun initWith(view: EditorView) = with(view) {
@@ -52,9 +53,9 @@ class MainActivity : AppCompatActivity(), IEditorListener {
             // - InputController.INPUT_MODE_NONE
             // - InputController.INPUT_MODE_FORCE_PEN
             // - InputController.INPUT_MODE_FORCE_TOUCH
-            inputMode = InputController.INPUT_MODE_AUTO
+            inputMode = InputController.INPUT_MODE_FORCE_PEN
             // uncomment the following line to use integrated font for math equations rendering.
-            // setTypefaces(FontUtils.loadFontsFromAssets(applicationContext.assets))
+            setTypefaces(FontUtils.loadFontsFromAssets(applicationContext.assets))
             post {
                 // TODO: 5 - attach the content part to the editor.
                 editor?.part = contentPart

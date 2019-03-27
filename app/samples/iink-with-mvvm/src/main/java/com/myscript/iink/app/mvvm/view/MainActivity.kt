@@ -16,6 +16,7 @@ import com.myscript.iink.ContentPart
 import com.myscript.iink.Editor
 import com.myscript.iink.IEditorListener
 import com.myscript.iink.app.common.IInteractiveInkApplication
+import com.myscript.iink.app.mvvm.Constants.IINK_PACKAGE_NAME
 import com.myscript.iink.app.mvvm.MyApplication
 import com.myscript.iink.app.mvvm.R
 import com.myscript.iink.app.mvvm.viewmodel.ContentViewModel
@@ -48,21 +49,23 @@ class MainActivity : AppCompatActivity(), IEditorListener {
         // - if content package has a content part stored in view model
         // - - get the content part from content package by id and attach it to the editor
         // - otherwise: create a new content part and attach it to the editor.
-        content.observe(this@MainActivity, Observer { content ->
-            content?.let {
-                editorView.run {
-                    post {
-                        contentPackage?.parts
-                            ?.singleOrNull { it.id == content.contentPart }
-                            ?.let { editor?.part = it }
-                        visibility = View.VISIBLE
-                    }
+        contents.observe(this@MainActivity, Observer { contents ->
+            val content = contents?.singleOrNull { it.contentPackage == IINK_PACKAGE_NAME }
+            // initializes content part.
+            // TODO: 3 - try different part types: Diagram, Drawing, Math, Text, Text Document.
+            contentPart = contentPart // content part stored in view model.
+                ?: content?.contentPart?.let {
+                    // content part from content package by id stored in model repository.
+                    contentPackage?.parts?.singleOrNull { part -> part.id == it }
+                } ?: contentPackage?.createPart("Text Document") // create a new content part.
+            // TODO: 5 - attach the content part to the editor.
+            editorView.run {
+                post {
+                    contentPart?.let { editor?.part = it }
+                    visibility = View.VISIBLE
                 }
             }
         })
-        // initialize a content part in view model.
-        // TODO: 3 - try different part types: Diagram, Drawing, Math, Text, Text Document.
-        contentPart = contentPart ?: contentPackage?.createPart("Text Document")
     }
 
     private fun initWith(view: EditorView) = with(view) {

@@ -13,6 +13,7 @@ Code Labs
 ---------
 
 - [Get Started: Your First Interactive Ink Application](app/starter)
+- [Math Pad: An Interative Ink Application for Handwriting Formulas](app/math-pad)
 
 MyScript Certificate
 --------------------

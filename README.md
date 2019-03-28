@@ -14,6 +14,7 @@ Code Labs
 
 - [Get Started: Your First Interactive Ink Application](app/starter)
 - [Math Pad: An Interative Ink Application for Handwriting Formulas](app/math-pad)
+- [Sample: Create Multiple Editor Views](app/samples/editor-views)
 
 MyScript Certificate
 --------------------

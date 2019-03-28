@@ -4,20 +4,23 @@
 
 package com.myscript.iink.app.mvvm.view
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import com.myscript.iink.ContentPackage
 import com.myscript.iink.ContentPart
 import com.myscript.iink.Editor
 import com.myscript.iink.IEditorListener
 import com.myscript.iink.app.common.IInteractiveInkApplication
 import com.myscript.iink.app.mvvm.MyApplication
 import com.myscript.iink.app.mvvm.R
+import com.myscript.iink.app.mvvm.viewmodel.ContentViewModel
 import com.myscript.iink.extensions.convert
+import com.myscript.iink.extensions.parts
 import com.myscript.iink.uireferenceimplementation.EditorView
 import com.myscript.iink.uireferenceimplementation.InputController
 import kotlinx.coroutines.Dispatchers
@@ -26,21 +29,40 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), IEditorListener {
 
-    private lateinit var contentPart: ContentPart
+    private val contentPackage get() = (application as? MyApplication)?.contentPackage
     private lateinit var editorView: EditorView
+    private lateinit var vm: ContentViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // TODO: 1 - initialize content part with content package.
-        (application as? MyApplication)?.contentPackage?.let { initWith(it) }
-        // TODO: 2 - initialize with editor view.
+        // TODO: 1 - initialize with editor view.
         editorView = findViewById<EditorView>(R.id.editor_view).also { initWith(it) }
+        // TODO: 2 - initialize content part with content view model.
+        vm = ViewModelProviders.of(this).get(ContentViewModel::class.java)
+            .also { initWith(it) }
     }
 
-    private fun initWith(contentPackage: ContentPackage) = with(contentPackage) {
+    private fun initWith(vm: ContentViewModel) = with(vm) {
+        // observes content changes:
+        // - if content package has a content part stored in view model
+        // - - get the content part from content package by id and attach it to the editor
+        // - otherwise: create a new content part and attach it to the editor.
+        content.observe(this@MainActivity, Observer { content ->
+            content?.let {
+                editorView.run {
+                    post {
+                        contentPackage?.parts
+                            ?.singleOrNull { it.id == content.contentPart }
+                            ?.let { editor?.part = it }
+                        visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+        // initialize a content part in view model.
         // TODO: 3 - try different part types: Diagram, Drawing, Math, Text, Text Document.
-        createPart("Text Document").let { contentPart = it }
+        contentPart = contentPart ?: contentPackage?.createPart("Text Document")
     }
 
     private fun initWith(view: EditorView) = with(view) {
@@ -55,17 +77,16 @@ class MainActivity : AppCompatActivity(), IEditorListener {
             inputMode = InputController.INPUT_MODE_AUTO
             // uncomment the following line to use integrated font for math equations rendering.
             // setTypefaces(FontUtils.loadFontsFromAssets(applicationContext.assets))
-            post {
-                // TODO: 5 - attach the content part to the editor.
-                editor?.part = contentPart
-                visibility = View.VISIBLE
-            }
         }
+    }
+
+    override fun onStop() {
+        contentPackage?.saveToTemp()
+        super.onStop()
     }
 
     override fun onDestroy() {
         editorView.close()
-        contentPart.close()
         super.onDestroy()
     }
 

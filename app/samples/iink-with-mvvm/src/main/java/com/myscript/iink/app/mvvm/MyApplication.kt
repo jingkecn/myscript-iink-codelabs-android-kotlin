@@ -5,6 +5,7 @@
 package com.myscript.iink.app.mvvm
 
 import com.myscript.iink.ContentPackage
+import com.myscript.iink.PackageOpenOption
 import com.myscript.iink.app.common.InteractiveInkApplication
 import com.myscript.iink.app.mvvm.Constants.IINK_PACKAGE_NAME
 import java.io.File
@@ -18,8 +19,8 @@ class MyApplication : InteractiveInkApplication() {
         super.onCreate()
         val myPackageFile = File(filesDir, "$IINK_PACKAGE_NAME.iink")
         try {
-            // create a new iink  content package.
-            contentPackage = engine.createPackage(myPackageFile)
+            // open package or create a new one if it doesn't exist.
+            contentPackage = engine.openPackage(myPackageFile, PackageOpenOption.CREATE)
         } catch (e: Exception) {
             e.printStackTrace()
         }

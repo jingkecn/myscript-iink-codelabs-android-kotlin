@@ -10,6 +10,7 @@ def myProjects = [
         ':app-starter'             : file("$settingsDir/app/starter"),
         // samples
         ':sample-editor-views'     : file("$settingsDir/app/samples/editor-views"),
+        ':sample-iink-with-mvvm'   : file("$settingsDir/app/samples/iink-with-mvvm"),
         // libraries
         ':app-common'              : file("$settingsDir/app/common"),
         ':my-certificate'          : file("$settingsDir/myscript/certificate"),

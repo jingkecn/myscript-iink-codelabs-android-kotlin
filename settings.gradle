@@ -9,7 +9,7 @@ def myProjects = [
         ':app-math-pad'            : file("$settingsDir/app/math-pad"),
         ':app-starter'             : file("$settingsDir/app/starter"),
         // samples
-        ':sample-1-editor-views'   : file("$settingsDir/app/samples/editor-views"),
+        ':sample-editor-views'     : file("$settingsDir/app/samples/editor-views"),
         // libraries
         ':app-common'              : file("$settingsDir/app/common"),
         ':my-certificate'          : file("$settingsDir/myscript/certificate"),

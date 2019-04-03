@@ -11,10 +11,10 @@ import org.gradle.api.tasks.TaskAction
  * Download resource assets from remote server.
  */
 @SuppressWarnings("GroovyUnusedDeclaration")
-class CopyResourceAssetsTask extends DefaultTask {
+class FetchRecognitionAssetsTask extends DefaultTask {
 
     @TaskAction
-    void copyResourceAssets() {
+    void fetchRecognitionAssets() {
         // Thanks to https://gitreleases.dev/
         def baseUrl = "https://gitreleases.dev/gh/jingkecn/myscript-iink-recognition-assets/latest"
         def urls = [

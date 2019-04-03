@@ -2,7 +2,7 @@
  * Copyright (c) MyScript. All rights reserved.
  */
 
-import com.myscript.gradle.tasks.CopyResourceAssetsTask
+import com.myscript.gradle.tasks.FetchRecognitionAssetsTask
 
 apply plugin: 'com.android.library'
 
@@ -45,6 +45,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-task copyResourceAssets(type: CopyResourceAssetsTask)
+task fetchRecognitionAssets(type: FetchRecognitionAssetsTask)
 
-preBuild.dependsOn copyResourceAssets
+preBuild.dependsOn fetchRecognitionAssets

@@ -15,7 +15,8 @@ class CopyResourceAssetsTask extends DefaultTask {
 
     @TaskAction
     void copyResourceAssets() {
-        def baseUrl = "https://s3-us-west-2.amazonaws.com/iink/assets/$project.ext.iinkVersionName"
+        // Thanks to https://gitreleases.dev/
+        def baseUrl = "https://gitreleases.dev/gh/jingkecn/myscript-iink-recognition-assets/latest"
         def urls = [
                 "$baseUrl/myscript-iink-recognition-diagram.zip",
                 "$baseUrl/myscript-iink-recognition-raw-content.zip",
@@ -30,10 +31,10 @@ class CopyResourceAssetsTask extends DefaultTask {
         def diagramConf = project.file("$intoDir/conf/diagram.conf")
         def rawContentConf = project.file("$intoDir/conf/raw-content.conf")
         def mathConf = project.file("$intoDir/conf/math.conf")
-        def textConf = project.file("$intoDir/conf/en_US.conf")
+        def enUSConf = project.file("$intoDir/conf/en_US.conf")
 
-        if (!diagramConf.exists() || !rawContentConf.exists() || !mathConf.exists() || !textConf
-                .exists()) {
+        if (!diagramConf.exists() || !rawContentConf.exists() || !mathConf.exists()
+                || !enUSConf.exists()) {
             def fromDir = project.file("$intoDir/temp")
             if (!fromDir.isDirectory())
                 fromDir.mkdirs()

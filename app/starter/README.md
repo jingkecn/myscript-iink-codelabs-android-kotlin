@@ -1,22 +1,22 @@
 Get Started: Your First Interactive Ink Application
 ===================================================
 
-In this pratical, you'll learn how to create and run our first Interactive Ink (abbr. as **IInk** in the following context) application from the [scaffold](https://github.com/jingkecn/myscript-iink-scaffold-android-kotlin):
+In this practical, you'll learn how to create and run our first Interactive Ink (abbr. as **IInk** in the following context) application from the [scaffold](https://github.com/jingkecn/myscript-iink-scaffold-android-kotlin):
 
 - [Get Started: Your First Interactive Ink Application](#get-started-your-first-interactive-ink-application)
   - [App Preview](#app-preview)
   - [IInk Engine](#iink-engine)
   - [Your First Editor View](#your-first-editor-view)
-  - [Interactivities](#interactivities)
+  - [Interactivity](#interactivity)
   - [Summary](#summary)
 
 > [!ATTENTION]
-> In this practical, it is assumed that you have basic fundermentals of Android development (Kotlin).
+> In this practical, it is assumed that you have basic fundamentals of Android development (Kotlin).
 
 App Preview
 -----------
 
-This simple application displays a page with guidlines, where you can write with your active pen or finger, and get the recognized result showing above your handwriting ink.
+This simple application displays a page with guidelines, where you can write with your active pen or finger, and get the recognized result showing above your handwriting ink.
 
 Here is what the final app will look like:
 
@@ -139,10 +139,10 @@ editorView.visibility = View.VISIBLE
 > [!INFO]
 > The `EditorView` is set [invisible](https://github.com/MyScript/interactive-ink-examples-android/blob/master/UIReferenceImplementation/src/main/res/layout/editor_view.xml#L9) by default in the layout `editor_view.xml`.
 
-Now build and run your app, then you'll be able to interact with MyScript IInk, like the [preview](#app-preview) at the beginning of this pratical.
+Now build and run your app, then you'll be able to interact with MyScript IInk, like the [preview](#app-preview) at the beginning of this practical.
 
-Interactivities
----------------
+Interactivity
+-------------
 
 By default, MyScript IInk provides the following gestures for editing (images from the official [docs](https://developer.myscript.com/docs/concepts/editing-gestures/)):
 
@@ -154,7 +154,7 @@ By default, MyScript IInk provides the following gestures for editing (images fr
 | Highlight | ![Highlight](../../docs/images/myscript/gest-frame.png)                                                                              |
 | Empasis   | ![Underline](../../docs/images/myscript/gest-underline.png)![Double Underline](../../docs/images/myscript/gest-double-underline.png) |
 
-These gestures can satisty most of editing needs. You can play with these gestures in the application you create in this pratical.
+These gestures can satisfy most of editing needs. You can play with these gestures in the application you create in this practical.
 
 > [!ATTENTION]
 > Not all editing gestures are compatible for all types of content. Please check compatibilities in official [docs](https://developer.myscript.com/docs/interactive-ink/1.3/overview/gestures/).
@@ -162,9 +162,9 @@ These gestures can satisty most of editing needs. You can play with these gestur
 > [!PS]
 > To non-European friends: a **`×`** means **`compatible`** in the [table](https://developer.myscript.com/docs/interactive-ink/1.3/overview/gestures/), don't be confused.
 
-Besides, there are 4 other editings:
+Besides, there are 4 other editing:
 
-| Editings                   | Preview                                                                         |
+| Editing                    | Preview                                                                         |
 | -------------------------- | ------------------------------------------------------------------------------- |
 | Clear                      | ![Undo](../../docs/images/app/starter/editing-clear.gif)                        |
 | Redo & Undo                | ![Undo](../../docs/images/app/starter/editing-redo-undo.gif)                    |
@@ -175,7 +175,7 @@ Besides, there are 4 other editings:
 editorView.editor?.let {
   // wait for the editor to be idle.
   if (!it.isIdle) it.waitForIdle()
-  // convert all you handwrtten content into typeset result.
+  // convert all you handwritten content into typeset result.
   it.convert() // see [!ATTENTION] section below.
   // undo your modifications if any
   if (it.canUndo) it.undo()
@@ -187,7 +187,7 @@ editorView.editor?.let {
 ```
 
 > [!ATTENTION]
-> The API [`Editor.convert()`](../../iink/extensions/src/main/java/com/myscript/iink/extensions/Editor.kt#L9) is not an official API but an [extension function](https://kotlinlang.org/docs/reference/extensions.html#extension-functions) created in this pratical, this extension API will be used instead of the official API [Editor.convert(ContentBlock, ConversionState)](https://developer.myscript.com/refguides/interactive-ink/android/1.3/com/myscript/iink/Editor.html#convert-com.myscript.iink.ContentBlock-com.myscript.iink.ConversionState-) for tentative comprehension.
+> The API [`Editor.convert()`](../../iink/extensions/src/main/java/com/myscript/iink/extensions/Editor.kt#L9) is not an official API but an [extension function](https://kotlinlang.org/docs/reference/extensions.html#extension-functions) created in this practical, this extension API will be used instead of the official API [Editor.convert(ContentBlock, ConversionState)](https://developer.myscript.com/refguides/interactive-ink/android/1.3/com/myscript/iink/Editor.html#convert-com.myscript.iink.ContentBlock-com.myscript.iink.ConversionState-) for tentative comprehension.
 
 ```kotlin
 fun Editor.convert() =
@@ -198,7 +198,7 @@ Summary
 -------
 
 - All interactive ink applications are driven by an [`Engine`](https://developer.myscript.com/docs/interactive-ink/1.3/android/fundamentals/interactive-ink-runtime/), whose initialization requires a valid, active [certificate](https://developer.myscript.com/getting-started).
-- All interactive ink UI requires an [`EditorView`](https://github.com/MyScript/interactive-ink-examples-android/blob/master/UIReferenceImplementation/src/main/java/com/myscript/iink/uireferenceimplementation/EditorView.java) with a minum basic implementations of interactive ink, each `EditorView` owns an [`Editor`](https://developer.myscript.com/docs/interactive-ink/1.3/android/fundamentals/editing/#editor-level-configuration) for manipulations of ink interactivities.
+- All interactive ink UI requires an [`EditorView`](https://github.com/MyScript/interactive-ink-examples-android/blob/master/UIReferenceImplementation/src/main/java/com/myscript/iink/uireferenceimplementation/EditorView.java) with a basic implementations of interactive ink, each `EditorView` owns an [`Editor`](https://developer.myscript.com/docs/interactive-ink/1.3/android/fundamentals/editing/#editor-level-configuration) for manipulations of ink interactivity.
 - The interactive ink `Editor` works with [`ContentPart`](https://developer.myscript.com/docs/interactive-ink/1.3/android/fundamentals/storage/#working-with-parts), which is created by a [`ContentPackage`](https://developer.myscript.com/docs/interactive-ink/1.3/android/fundamentals/storage/#working-with-packages) created by `Engine`.
-- MyScript Interactive Ink SDK has default interactive [gestures](https://developer.myscript.com/docs/interactive-ink/1.3/overview/gestures/) integrated: **erase**, **break (words / lines)**, **join (words / lines)**, **highlight** and **emphasis (underline / double-underline)**, besides, the conversion is also interactable by double-tap on the handwritten ink, as long as the `touch` is activated for ink interactivity.
+- MyScript Interactive Ink SDK has default interactive [gestures](https://developer.myscript.com/docs/interactive-ink/1.3/overview/gestures/) integrated: **erase**, **break (words / lines)**, **join (words / lines)**, **highlight** and **emphasis (underline / double-underline)**, besides, the conversion is also interactive by double-tap on the handwritten ink, as long as the `touch` is activated for ink interactivity.
 - There are also 2 editing stacks integrated in MyScript Interactive Ink SDK: **undo** and **redo**, which can be implemented via the corresponding APIs of [`Editor`](https://developer.myscript.com/refguides/interactive-ink/android/1.3/com/myscript/iink/Editor.html).

@@ -3,7 +3,7 @@ Welcome to Code Labs for MyScript Interactive Ink
 
 ![app-starter-preview](docs/images/app/starter/preview.gif)
 
-[MyScript Developer](https://developer.myscript.com/) provides a complete developer guide of programming with [Interacrive Ink SDK](https://developer.myscript.com/docs/interactive-ink/1.3/overview/about/), however, the Code Labs in this project are aimed at hands-on coding experience by stepping you throught the process of buiding a small application or integrating Interactive Ink into an existing application.
+[MyScript Developer](https://developer.myscript.com/) provides a complete developer guide of programming with [Interactive Ink SDK](https://developer.myscript.com/docs/interactive-ink/1.3/overview/about/), however, the Code Labs in this project are aimed at hands-on coding experience by stepping you through the process of building a small application or integrating Interactive Ink into an existing application.
 
 - [Welcome to Code Labs for MyScript Interactive Ink](#welcome-to-code-labs-for-myscript-interactive-ink)
   - [Code Labs](#code-labs)
@@ -13,14 +13,15 @@ Code Labs
 ---------
 
 - [Get Started: Your First Interactive Ink Application](app/starter)
-- [Math Pad: An Interative Ink Application for Handwriting Formulas](app/math-pad)
-- [Sample: Create Multiple Editor Views](app/samples/editor-views)
+- [Math Pad: An Interactive Ink Application for Handwriting Formulas](app/math-pad)
+- [Challenge: Create Multiple Editor Views](app/samples/editor-views)
+- [Advance: Persistent Storage of Interactive Ink Content](app/samples/persistent-storage)
 
 MyScript Certificate
 --------------------
 
 > [!IMPORTANT]
-> A personal developer certificate applied from [MyScript Developer](https://developer.myscript.com/getting-started) is integrated for the samples in this project, and is **NOT** supposed to be transfered for other usages.
+> A personal developer certificate applied from [MyScript Developer](https://developer.myscript.com/getting-started) is integrated for the samples in this project, and is **NOT** supposed to be transferred for other usages.
 
 If you run the starter app or samples without a valid certificate, you'll see your application crashes and an error showing up in the `logcat` window:
 
@@ -29,7 +30,7 @@ If you run the starter app or samples without a valid certificate, you'll see yo
 
 ![invalid-certificate.png](docs/images/myscript/certificate-error.png)
 
-To make it work, you have to go to the [MyScript Developer](https://developer.myscript.com/getting-started) website, select the plarform `Android`, then click `send email` under `Get your certificate` to receive a valid certificate:
+To make it work, you have to go to the [MyScript Developer](https://developer.myscript.com/getting-started) website, select the platform `Android`, then click `send email` under `Get your certificate` to receive a valid certificate:
 
 ![get-certificate.png](docs/images/myscript/certificate-get.png)
 

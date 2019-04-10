@@ -6,15 +6,16 @@ rootProject.name = 'myscript.iink.codelabs.android.kotlin'
 
 def myProjects = [
         // applications
-        ':app-math-pad'            : file("$settingsDir/app/math-pad"),
-        ':app-starter'             : file("$settingsDir/app/starter"),
+        ':app-math-pad'             : file("$settingsDir/app/math-pad"),
+        ':app-starter'              : file("$settingsDir/app/starter"),
         // samples
-        ':sample-editor-views'     : file("$settingsDir/app/samples/editor-views"),
+        ':sample-editor-views'      : file("$settingsDir/app/samples/editor-views"),
+        ':sample-persistent-storage': file("$settingsDir/app/samples/persistent-storage"),
         // libraries
-        ':app-common'              : file("$settingsDir/app/common"),
-        ':my-certificate'          : file("$settingsDir/myscript/certificate"),
-        ':myscript-iink'           : file("$settingsDir/myscript/iink/ui/UIReferenceImplementation"),
-        ':myscript-iink-extensions': file("$settingsDir/myscript/iink/extensions")
+        ':app-common'               : file("$settingsDir/app/common"),
+        ':my-certificate'           : file("$settingsDir/myscript/certificate"),
+        ':myscript-iink'            : file("$settingsDir/myscript/iink/ui/UIReferenceImplementation"),
+        ':myscript-iink-extensions' : file("$settingsDir/myscript/iink/extensions")
 ]
 
 myProjects.each { myProject, dir ->

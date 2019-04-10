@@ -1,0 +1,12 @@
+<!--
+  ~ Copyright (c) MyScript. All rights reserved.
+  -->
+
+<resources>
+    <string name="app_name">Persistent Storage</string>
+
+    <string name="menu_undo">Undo</string>
+    <string name="menu_redo">Redo</string>
+    <string name="menu_clear">Clear</string>
+    <string name="menu_convert">Convert</string>
+</resources>

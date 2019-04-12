@@ -2,4 +2,8 @@
   ~ Copyright (c) MyScript. All rights reserved.
   -->
 
-<manifest package="com.myscript.certificate" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.myscript.certificate">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

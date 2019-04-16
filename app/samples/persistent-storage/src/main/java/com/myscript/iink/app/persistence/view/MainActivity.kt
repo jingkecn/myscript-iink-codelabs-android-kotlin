@@ -24,9 +24,6 @@ import com.myscript.iink.extensions.convert
 import com.myscript.iink.extensions.parts
 import com.myscript.iink.uireferenceimplementation.EditorView
 import com.myscript.iink.uireferenceimplementation.InputController
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), IEditorListener {
 
@@ -145,8 +142,8 @@ class MainActivity : AppCompatActivity(), IEditorListener {
     }
 
     override fun onError(editor: Editor?, blockId: String?, message: String?) {
-        GlobalScope.launch(Dispatchers.Main) {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         }
     }
 

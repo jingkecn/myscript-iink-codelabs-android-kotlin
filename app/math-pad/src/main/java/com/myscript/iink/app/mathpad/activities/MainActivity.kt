@@ -19,9 +19,6 @@ import com.myscript.iink.extensions.copyToClipboard
 import com.myscript.iink.uireferenceimplementation.EditorView
 import com.myscript.iink.uireferenceimplementation.FontUtils
 import com.myscript.iink.uireferenceimplementation.InputController
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), IEditorListener {
 
@@ -98,8 +95,22 @@ class MainActivity : AppCompatActivity(), IEditorListener {
                 R.id.menu_redo -> it.redo()
                 R.id.menu_undo -> it.undo()
                 // TODO: 8 - export and copy to clipboard.
-                R.id.menu_export_latex -> it.copyToClipboard(this, MimeType.LATEX)
-                R.id.menu_export_math_ml -> it.copyToClipboard(this, MimeType.MATHML)
+                R.id.menu_export_latex ->
+                    it.copyToClipboard(this, MimeType.LATEX).let { result ->
+                        Toast.makeText(
+                            this,
+                            "String (${MimeType.LATEX}) copied to clipboard:\n$result",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                R.id.menu_export_math_ml ->
+                    it.copyToClipboard(this, MimeType.MATHML).let { result ->
+                        Toast.makeText(
+                            this,
+                            "String (${MimeType.MATHML}) copied to clipboard:\n$result",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 else -> return@let
             }
         }
@@ -123,8 +134,8 @@ class MainActivity : AppCompatActivity(), IEditorListener {
     }
 
     override fun onError(editor: Editor?, blockId: String?, message: String?) {
-        GlobalScope.launch(Dispatchers.Main) {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         }
     }
 

@@ -23,9 +23,6 @@ import com.myscript.iink.uireferenceimplementation.FontUtils
 import com.myscript.iink.uireferenceimplementation.InputController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.problem_solver.view.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), IEditorListener {
 
@@ -168,8 +165,8 @@ class MainActivity : AppCompatActivity(), IEditorListener {
     }
 
     override fun onError(editor: Editor?, blockId: String?, message: String?) {
-        GlobalScope.launch(Dispatchers.Main) {
-            Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         }
     }
 
